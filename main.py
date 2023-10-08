@@ -11,8 +11,6 @@ def main():
     # Формируем данные, необходимые для вывода на экран
     sort_list = func.filters_sorts(list_trans, ('state', 'EXECUTED'), 'date', rev=True, line_counter=5)
 
-
-
     # Убираем из списка транзакций операци со статусом перевода 'CANCELED'
     # filter_lst = list(filter(lambda x : (x and x['state'] == 'EXECUTED'), list_trans))
 
