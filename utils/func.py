@@ -3,24 +3,6 @@ import os
 from datetime import datetime
 
 
-# def load_data_file_2(file_name):
-#     """ Загружает данные из файла в формате JSON в список.
-#         Возврашает список, удаляя пустые элементы
-#         Если файла нет - возвращает None """
-#
-#     out_data = []
-#     if os.path.exists(file_name):
-#         with open(file_name, 'r', encoding='utf-8') as file:
-#             for rec in json.load(file):
-#                 if rec:
-#                     out_data.append(rec)
-#     else:
-#         out_data = None
-#     if not out_data:
-#         return None
-#     return out_data
-
-
 def load_data_file(file_name):
     """ Загружает данные из файла в формате JSON в список.
         Возврашает список.
@@ -31,17 +13,6 @@ def load_data_file(file_name):
             return json.load(file)
     else:
         return None
-
-
-# def date_in_sec(str_data):
-#     """ Переводит строковое значение даты в абсолютное время в секундах """
-#
-#     lst_data = list(str_data)
-#     ind = lst_data.index("T")
-#     lst_data.pop(ind)
-#     lst_data.insert(ind, " ")
-#     # str_data = "".join(lst_data)
-#     return "".join(lst_data)
 
 
 def date_format(date_str):
@@ -78,7 +49,7 @@ def masks_numbers(code_str):
         new_str = code_str[0:4] + " " + code_str[4:6] + "** **** " + code_str[-4:]
     else:
         new_str = "**" + code_str[-4:]
-    return new_str
+    return " ".join(code_lst[0: -1]) + " " + new_str
 
 
 def filters_sorts(lst_data: list, fil_param: tuple, sort_param: str, rev=True, line_counter=None, ):
@@ -94,7 +65,8 @@ def filters_sorts(lst_data: list, fil_param: tuple, sort_param: str, rev=True, l
         return new_lst[0: line_counter]
     return new_lst
 
-# print(masks_numbers("Maestro 3928549031574026"))
+
+# print(masks_numbers("Visa Classic 2842878893689012"))
 
 # print(date_format("2019-12-08T22:46:21.935582"))
 
