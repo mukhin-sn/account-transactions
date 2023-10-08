@@ -11,19 +11,15 @@ def main():
     # Формируем данные, необходимые для вывода на экран
     sort_list = func.filters_sorts(list_trans, ('state', 'EXECUTED'), 'date', rev=True, line_counter=5)
 
-
-
-    # Убираем из списка транзакций операци со статусом перевода 'CANCELED'
-    # filter_lst = list(filter(lambda x : (x and x['state'] == 'EXECUTED'), list_trans))
-
-    # Производим сортировку по дате
-    # new_lst = sorted(filter_lst, key=lambda date: date['date'], reverse=True)
-
-    # func.date_in_sec(list_trans)
-
+    # Вывод пяти последних успешных результатов транзакций
     for i in range(len(sort_list)):
-        # list_trans[i]['date'] = func.date_in_sec(list_trans[i]['date'])
-        print(sort_list[i])
+        print(f"{func.date_format(sort_list[i]['date'])} {sort_list[i]['description']}")
+        if sort_list[i].get('from') is None:
+            print(f"{func.masks_numbers(sort_list[i]['to'])}")
+        else:
+            print(f"{func.masks_numbers(sort_list[i]['from'])} --> {func.masks_numbers(sort_list[i]['to'])}")
+        print(f"{sort_list[i]['operationAmount']['amount']} {sort_list[i]['operationAmount']['currency']['name']}")
+        print()
 
 
 if __name__ == '__main__':
