@@ -9,4 +9,3 @@ def test_load_data_file():
     assert func.load_data_file('test5.json') is None
     with pytest.raises(json.decoder.JSONDecodeError):
         func.load_data_file('test3.json')
-
