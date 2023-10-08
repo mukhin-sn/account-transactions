@@ -33,18 +33,19 @@ def date_format(date_str):
     #         new_date += char
     #     else:
     #         new_date += " "
-    return datetime.strptime(new_date, '%Y-%m-%d %H:%M:%S.%f').strftime('%d.%m.%Y')
+        return datetime.strptime(new_date, '%Y-%m-%d %H:%M:%S.%f').strftime('%d.%m.%Y')
 
 
 def masks_numbers(code_str):
-    """ Если строка содержит номер счета - то формат вывода **ХХХХ
-        Если строка содержит номер банковской карты - то формат вывода ХХХХ ХХ** **** ХХХХ """
+    """ Если строка содержит номер счета - то формат вывода номера: **ХХХХ
+        Если строка содержит номер банковской карты - то формат вывода номера: ХХХХ ХХ** **** ХХХХ """
 
     code_lst = code_str.split()
     # Можно так:
     # code_str = "".join(list(filter(lambda x: x.isdigit(), code_lst)))
     # А можно так:
     code_str = code_lst[-1]
+    # маскировка цифр номера счета или карты
     if len(code_str) < 20:
         new_str = code_str[0:4] + " " + code_str[4:6] + "** **** " + code_str[-4:]
     else:
