@@ -64,25 +64,3 @@ def filters_sorts(lst_data: list, fil_param: tuple, sort_param: str, rev=True, l
     if line_counter is not None and line_counter < len(new_lst):
         return new_lst[0: line_counter]
     return new_lst
-
-
-# print(masks_numbers("Visa Classic 2842878893689012"))
-
-# print(date_format("2019-12-08T22:46:21.935582"))
-
-# fn = os.path.join('../', 'operations.json')
-# open_lst = load_data_file(fn)
-
-# print(open_dic)
-
-# Ключи "data" в словаре переписываем в секунды абсолютного времени (для сортировки)
-# for i in open_lst:
-#     # print(i)
-#     # i['date'] = date_in_sec(i['date'])
-#     i['date'] = datetime.strptime(date_in_sec(i['date']), '%Y-%m-%d %H:%M:%S.%f').timestamp()
-#     print(i)
-
-# Вывод даты в требуемом формате, переводя из абсолютных секунд
-# print(datetime.fromtimestamp(open_lst[0]['date']).strftime("%d.%m.%y"))
-# print(date_in_sec(open_lst[0]['date']))
-# print(datetime.strptime(date_in_sec(open_lst[0]['date']), '%Y-%m-%d %H:%M:%S.%f').timestamp())
