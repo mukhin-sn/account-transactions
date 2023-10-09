@@ -33,7 +33,7 @@ def date_format(date_str):
     #         new_date += char
     #     else:
     #         new_date += " "
-        return datetime.strptime(new_date, '%Y-%m-%d %H:%M:%S.%f').strftime('%d.%m.%Y')
+    return datetime.strptime(new_date, '%Y-%m-%d %H:%M:%S.%f').strftime('%d.%m.%Y')
 
 
 def masks_numbers(code_str):
@@ -46,7 +46,7 @@ def masks_numbers(code_str):
     # А можно так:
     code_str = code_lst[-1]
     # маскировка цифр номера счета или карты
-    if len(code_str) < 20:
+    if len(code_str) == 16:
         new_str = code_str[0:4] + " " + code_str[4:6] + "** **** " + code_str[-4:]
     else:
         new_str = "**" + code_str[-4:]
@@ -54,8 +54,8 @@ def masks_numbers(code_str):
 
 
 def filters_sorts(lst_data: list, fil_param: tuple, sort_param: str, rev=True, line_counter=None, ):
-    """ Фильтрует список lst_data по параметру fil_param
-        Сортирует список lst_data по параметру sort_param
+    """ Фильтрует список словарей lst_data по параметру fil_param
+        Сортирует список словарей lst_data по параметру sort_param
         rev - направление сортировки: True - по убыванию, False - по возрастанию
         Возвращает отфильтрованый и отсортированый список
         line_counter - колличество возвращаемых элементов отсортированного списка """
